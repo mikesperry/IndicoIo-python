@@ -2,7 +2,7 @@ import requests
 
 from indicoio.utils.api import api_handler
 from indicoio.utils.image import image_preprocess
-import indicoio.config as config
+from indicoio import config
 
 def fer(image, cloud=None, batch=False, api_key=None, **kwargs):
     """

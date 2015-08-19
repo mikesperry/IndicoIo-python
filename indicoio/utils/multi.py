@@ -5,7 +5,7 @@ from indicoio.utils.errors import IndicoError
 
 
 CLIENT_SERVER_MAP = dict((api, api.strip().replace("_", "").lower()) for api in API_NAMES)
-SERVER_CLIENT_MAP = dict((v, k) for k, v in CLIENT_SERVER_MAP.iteritems())
+SERVER_CLIENT_MAP = dict((v, k) for k, v in CLIENT_SERVER_MAP.items())
 AVAILABLE_APIS = {
     'text': TEXT_APIS,
     'image': IMAGE_APIS
@@ -13,7 +13,7 @@ AVAILABLE_APIS = {
 
 def invert_dictionary(d):
     return {
-        element: key for key, values in d.iteritems()
+        element: key for key, values in d.items()
         for element in values
     }
 
@@ -95,7 +95,7 @@ def multi(data, datatype, apis, batch=False, **kwargs):
 def handle_response(result):
     # Parse out the results to a dicionary of api: result
     return dict((api, parsed_response(api, res))
-        for api, res in result.iteritems())
+        for api, res in result.items())
 
 
 def analyze_text(input_text, apis=TEXT_APIS, **kwargs):

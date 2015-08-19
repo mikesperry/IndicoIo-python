@@ -2,7 +2,7 @@
 Image Utils
 Handles preprocessing images before they are sent to the server
 """
-import os.path, base64, StringIO, re, warnings
+import os.path, base64, io, re, warnings
 
 from PIL import Image
 
@@ -18,7 +18,7 @@ def image_preprocess(image, size=None, min_axis=None, batch=False):
     if batch:
         return [image_preprocess(img, batch=False) for img in image]
 
-    if isinstance(image, basestring):
+    if isinstance(image, str):
         b64_str = re.sub('^data:image/.+;base64,', '', image)
         if os.path.isfile(image):
             # check type of element
@@ -45,7 +45,8 @@ def image_preprocess(image, size=None, min_axis=None, batch=False):
         out_image = resize_image(out_image, size, min_axis)
 
     # convert to base64
-    temp_output = StringIO.StringIO()
+    #temp_output = io.StringIO()
+    temp_output = io.BytesIO()
     out_image.save(temp_output, format='PNG')
     temp_output.seek(0)
     output_s = temp_output.read()

@@ -12,8 +12,7 @@ def api_handler(arg, cloud, api, url_params=None, **kwargs):
     """
     Sends finalized request data to ML server and receives response.
     """
-
-    data = {'data': arg}
+    data = {'data': arg.decode('utf-8')}
     data.update(**kwargs)
     json_data = json.dumps(data)
     cloud = cloud or config.cloud
