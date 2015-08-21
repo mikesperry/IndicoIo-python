@@ -40,7 +40,7 @@ def intersections(data, apis = None, **kwargs):
             "At least 3 examples are required to use the intersections API"
         )
 
-    api_types = map(API_TYPES.get, apis)
+    api_types = list(map(API_TYPES.get, apis))
     if api_types[0] != api_types[1]:
         raise IndicoError(
             "Both `apis` must accept the same kind of input to use the intersections API"
