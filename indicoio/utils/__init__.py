@@ -2,6 +2,7 @@
 Basic utility classes and functions
 """
 import inspect
+from six import string_types
 
 from indicoio.utils.errors import DataStructureException
 
@@ -34,8 +35,8 @@ class TypeCheck(object):
 
 
 def is_url(data, batch=False):
-    if batch and isinstance(data[0], basestring):
+    if batch and isinstance(data[0], string_types):
         return True
-    if not batch and isinstance(data, basestring):
+    if not batch and isinstance(data, string_types):
         return True
     return False

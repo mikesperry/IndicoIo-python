@@ -1,7 +1,9 @@
-from indicoio.utils.api import api_handler
-import indicoio.config as config
+from ..utils.api import api_handler
+from ..utils.decorators import detect_batch_decorator
 
-def keywords(text, cloud=None, batch=False, api_key=None, **kwargs):
+
+@detect_batch_decorator
+def keywords(text, cloud=None, batch=False, api_key=None, version=2, batch_size=None, **kwargs):
     """
     Given input text, returns series of keywords and associated scores
 
@@ -20,5 +22,7 @@ def keywords(text, cloud=None, batch=False, api_key=None, **kwargs):
     :type text: str or unicode
     :rtype: Dictionary of feature score pairs
     """
-    url_params = {'batch': batch, 'api_key': api_key}
-    return api_handler(text, cloud=cloud, api="keywords", url_params=url_params, **kwargs)
+    if kwargs.get("language", "english") != "english":
+        version = 1
+    url_params = {"batch": batch, "api_key": api_key, "version": version}
+    return api_handler(text, cloud=cloud, api="keywords", url_params=url_params, batch_size=batch_size, **kwargs)

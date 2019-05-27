@@ -1,7 +1,14 @@
 import os
-from io import StringIO
+import sys
+try:
+    import configparser
+except ImportError:
+    import ConfigParser as configparser
 
-import configparser
+
+PY2 = True if sys.version_info[0] == 2 else False
+PY3 = not PY2
+
 
 class Settings(configparser.ConfigParser):
 
@@ -16,6 +23,12 @@ class Settings(configparser.ConfigParser):
         for fd in self.files:
             try:
                 self.read_file(fd)
+            except AttributeError:
+                # python 2
+                try:
+                    self.readfp(fd)
+                except AttributeError:
+                    self.read(fd)
             except configparser.MissingSectionHeaderError:
                 self.read(fd)
 
@@ -45,32 +58,6 @@ class Settings(configparser.ConfigParser):
             None
         )
 
-TEXT_APIS = [
-    'text_tags',
-    'political',
-    'sentiment',
-    'language',
-    'sentiment_hq',
-    'keywords',
-    'named_entities',
-    'twitter_engagement'
-]
-
-IMAGE_APIS = [
-    'fer',
-    'facial_features',
-    'image_features',
-    'content_filtering'
-]
-
-OTHER_APIS = [
-    "analyze_text", 
-    "analyze_image",
-    "intersections"
-]
-
-API_NAMES = IMAGE_APIS + TEXT_APIS + OTHER_APIS
-
 SETTINGS = Settings(files=[
     os.path.expanduser("~/.indicorc"),
     os.path.join(os.getcwd(), '.indicorc')
@@ -78,5 +65,6 @@ SETTINGS = Settings(files=[
 
 api_key = SETTINGS.api_key()
 cloud = SETTINGS.cloud()
-PUBLIC_API_HOST = 'apiv2.indico.io'
-url_protocol = "https:"
+host = os.getenv("INDICO_API_HOST", 'apiv2.indico.io')
+url_protocol = "https"
+serializer = "msgpack"
