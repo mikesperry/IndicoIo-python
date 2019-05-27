@@ -1,3 +1,4 @@
+2016
 v0.2.8, Tue May 13 -- Added Description, Authors file, changelog. Cleaned up import paths and modified corresponding examples and tests
 v0.2.10, Mon Jun 2 -- API now supports normalization, updating documentation to reflect this.
 v0.2.11, Fri Jun 6 -- Switched sentiment api to more general version with much higher quality. updated docs to reflect this. Also changed unintuitive posneg to more intuitive Sentiment. Kept old posneg for backward compatibility.
@@ -35,4 +36,45 @@ v0.8.1 Wed Jul 22 -- Add Sentiment HQ to predict_text API
 v0.9.0 Tue Jul 28 -- Deprecate batch function calls in favor of type inference
 v0.9.1 Mon Aug 3 -- Add Facial Localization API, image resizing updates
 v0.9.2 Fri Aug 14 -- Add intersections API, analyzeText, analyzeImage
+v0.9.3 Tue Sept 22 -- Add versioning, image recognition api
+v0.10.0 Tue Sept 29 -- Add Python 3 support
+v0.10.1 Wed Sept 30 -- Image resizing bug fix
+v0.10.2 Thu Oct 14 -- URL support for image APIs
+v0.10.3 Fri Oct 29 -- Issue warnings when out of credits
+v0.11.0 Fri Dec 04 -- Custom APIs, personality and persona APIs
+v0.11.1 Wed Dec 16 -- Bug fix for imported modules
+v0.11.2 Thu Dec 17 -- Relevance, people, places, and organizations APIs
+v0.13.0 Tue Feb 2 -- Tick version number to work around PyPI issue, HTTPS verification on by default
+v0.13.1 Thu Feb 11 -- Client side resize to 512 min axis for imagefeatures
+v0.13.2 Fri Feb 19 -- Custom API UX tweaking
+v0.14.0 Tue Mar 22 -- Add emotion API
+v0.15.0 Mon Mar 28 -- Pass api key via header, remove irrelevant kwargs from JSON body
+v0.15.1 Thu Mar 31 -- Change default settings for relevance and text features APIs
+v0.15.3 Wed Apr 27 -- More efficient status endpoint for custom collections
+v0.15.4 Thu June 9 -- Convert tuples to lists in input to custom collections API
+v0.15.5 Tues June 14 -- Political API upgrade to version 2
+v0.15.6 Wed June 29 -- NER API upgrade to version 2
+v0.16.0 Thu Jul 7 -- Support for custom collection permissioning
+v0.16.1 Thu Jul 21 -- Patch for Python3 custom collection's data adding bug
+v0.16.2 Fri Sep 16 -- Add support for batch_size keyword to split large batches of data into smaller chunks
+v0.16.3 Tue Sep 27 -- Add summarization API support
+v1.0.0 Thu Sep 29 -- Refactor for stable release
+v1.0.1 Wed Oct 19 -- Support for PDF Extraction API
+v1.0.3 Tue Oct 25 -- Fix Python3 support issues
+v1.0.4 Mon Dec 12 -- Fix setup.py to include pdf module
+v1.0.5 Mon Dec 19 -- Allow passing in more complex data to custom collections
+v1.0.6 Tue Dec 20 -- Vectorize data with custom collections domains
 
+2017
+v1.0.7 Tue Jan 17 -- Path checking no longer crashes on unicode
+v1.0.8 Tue Feb 07 -- Fix unicode encoding/decoding exception
+v1.0.9 Wed June 28 -- Fix path check on windows
+v1.1.0 Tue July 25 -- Add docx extraction API
+v1.1.1 Wednesday July 26 -- Hotfix: Add docx module to setup
+
+2018
+v1.1.2 Thursday March 29th -- Explanation visualization + improved error messages
+v1.1.3 Tuesday April 17th -- verify=True
+v1.1.4 Wed May 2nd -- msgpack support
+v1.1.5 Thu May 10th -- change default serializer to msgpack, remove intersections API
+v1.2.0 Thu Oct 25th -- following through on API deprecations, removing relevant tests
